@@ -8,4 +8,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/SamplesResources/Scenes/0-Main.unity
     guid: a09cb257d566c489595b16ab37547666
+  - enabled: 1
+    path: Assets/AR_Project/Scenes/GameplayScene.unity
+    guid: 737c8b92cd2668544b8a9c3a2544b363
+  - enabled: 1
+    path: Assets/AR_Project/Scenes/MainMenuScene.unity
+    guid: ddf330cbd2a379a4e867f4d747e414e5
+  - enabled: 1
+    path: Assets/AR_Project/Scenes/TestScene.unity
+    guid: f4ba9ac082881424099e97575e2aa6bf
+  - enabled: 1
+    path: Assets/AR_Project/Scenes/WinMenuScene.unity
+    guid: 4c35cf8e602b5454e933d3cd81340157
+  - enabled: 1
+    path: Assets/AR_Project/Scenes/LoseMenuScene.unity
+    guid: 2d8552e47b7dcd24d86455bc29584c4f
   m_configObjects: {}
