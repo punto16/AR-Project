@@ -26,7 +26,7 @@ public class Shoot : MonoBehaviour
     public void OnPointerUp()
     {
         isShooting = false;
-        StopCoroutine(ShootContinuously());
+        //StopCoroutine(ShootContinuously());
     }
 
     private IEnumerator ShootContinuously()
