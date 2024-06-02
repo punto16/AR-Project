@@ -19,6 +19,10 @@ public class Projectile : MonoBehaviour
             //Reduce health
             Destroy(collision.gameObject);
         }
+        if(collision.gameObject.CompareTag("Projectile"))
+        {
+            return;
+        }
         this.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         Instantiate(explosion, this.transform.position, this.transform.rotation);
         Destroy(this.gameObject);

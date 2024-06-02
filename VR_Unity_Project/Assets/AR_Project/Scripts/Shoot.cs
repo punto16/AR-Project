@@ -13,14 +13,39 @@ public class Shoot : MonoBehaviour
     public float distanceFromCamera = 5.0f;
     public float shootVelocity = 60.0f;
 
-    // Update is called once per frame
-    void Update()
+    public float shootInterval = 0.1f;
+
+    private bool isShooting = false;
+
+    public void OnPointerDown()
     {
-        if(Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        isShooting = true;
+        StartCoroutine(ShootContinuously());
+    }
+
+    public void OnPointerUp()
+    {
+        isShooting = false;
+        StopCoroutine(ShootContinuously());
+    }
+
+    private IEnumerator ShootContinuously()
+    {
+        while (isShooting)
         {
-            Vector3 bulletInstantiatePos = arCamera.position  + arCamera.forward * distanceFromCamera;
-            GameObject bullet = Instantiate(projectile, bulletInstantiatePos, arCamera.rotation) as GameObject;
-            bullet.GetComponent<Rigidbody>().velocity = arCamera.forward * shootVelocity;
+            ShootBullet();
+            yield return new WaitForSeconds(shootInterval);
+        }
+    }
+
+    private void ShootBullet()
+    {
+        Vector3 bulletInstantiatePos = arCamera.position + arCamera.forward * distanceFromCamera;
+        GameObject bullet = Instantiate(projectile, bulletInstantiatePos, arCamera.rotation) as GameObject;
+        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.velocity = arCamera.forward * shootVelocity;
         }
     }
 }
