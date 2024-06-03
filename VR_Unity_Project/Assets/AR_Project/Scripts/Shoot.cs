@@ -8,8 +8,8 @@ public class Shoot : MonoBehaviour
     public GameObject projectile;
 
     public float distanceFromCamera = 5.0f;
-    public float shootVelocity = 60.0f;
-    public float shootInterval = 0.1f;
+    public float shootVelocity = 120.0f;
+    public float shootInterval = 0.5f;
     public float overHeatCooldown = 5.0f;
 
     public uint maxBullets = 100;
