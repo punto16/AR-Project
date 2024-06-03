@@ -1,38 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    public NavMeshAgent agent;
     public Transform waypoint;
-    public float movementSpeed = 4;
-    public float rotationSpeed = 6;
 
-    // Start is called before the first frame update
+
     void Start()
     {
-
+        float kSpeed = Random.Range(0.8f, 1.8f);
+        agent.speed = 10 * kSpeed;
+        agent.angularSpeed = 180 * kSpeed;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        Movement();
-        LookAt();
-    }
+        if (agent) agent.SetDestination(waypoint.position);
 
-    private void Movement()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, waypoint.position, movementSpeed * Time.deltaTime);
 
-        var distance = Vector3.Distance(transform.position, waypoint.position);
-    }
-
-    private void LookAt()
-    {
-        var dir = waypoint.position - transform.position;
-        var rootTarget = Quaternion.LookRotation(dir);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rootTarget, rotationSpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider collision)
