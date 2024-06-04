@@ -17,7 +17,7 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(ProcesWave());
+        
     }
 
     // Update is called once per frame
@@ -45,6 +45,11 @@ public class Spawner : MonoBehaviour
         if (wavesFinish)
             return;
         currentWave++;
+        StartCoroutine(ProcesWave());
+    }
+
+    public void StartGame()
+    {
         StartCoroutine(ProcesWave());
     }
 

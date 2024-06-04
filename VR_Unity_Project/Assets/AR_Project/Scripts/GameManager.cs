@@ -12,11 +12,15 @@ public class GameManager : MonoBehaviour
     int totalHealth;
     int health;
 
+    public GameObject buttonStartGame;
+    public Spawner waveManager;
+
     // Start is called before the first frame update
     void Start()
     {
         totalHealth = waifus.Count - 1;
         health = totalHealth;
+        buttonStartGame.SetActive(true);
     }
 
     // Update is called once per frame
@@ -39,5 +43,11 @@ public class GameManager : MonoBehaviour
             waifus[health].SetActive(false);
             health--;
         }
+    }
+
+    public void StartGame()
+    {
+        buttonStartGame.SetActive(false);
+        waveManager.StartGame();
     }
 }
